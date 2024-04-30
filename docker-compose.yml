@@ -1,0 +1,22 @@
+# Use postgres/example user/password credentials
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:12.18
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: todo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./docker-data/postgresql/data/:/var/lib/postgresql/data/
+      
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
